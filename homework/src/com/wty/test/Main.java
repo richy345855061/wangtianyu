@@ -1,6 +1,12 @@
 package com.wty.test;
 
 import java.io.*;
+import java.util.Map;
+import java.util.Vector;
+
+import com.wty.domain.Product;
+import com.wty.tools.RWStrHelper;
+import com.wty.view.*;
 
 public class Main {
 
@@ -48,20 +54,30 @@ public class Main {
 		
 		
 			
+//		Map<String, Integer> maps = RWStrHelper.readBarData("data.txt");
+//		System.out.println(maps);
+//		Vector<Product> proVec = RWStrHelper.creObjByBarcode(maps);
+//		
+//		for (int i = 0; i < proVec.size(); ++i) {
+//			
+//			Product p = proVec.get(i);
+//			System.out.println(p.getName() + "  " + p.getPrice() + "  " + p.getNums() + "  "
+//						+ p.getFavourStyle() + "  " + p.getBarcode());
+//			
+//		}
 		
-		
-		
-		
+		new View2();
+			
 		
 		
 		
 		//String str = "可口可乐       3.0       BNGMF                    ITEM000001";
 		//String str = "                   'ITEM000001',     ";
-		String str2 = "                   'ITEM000001-2'     ";
-		
-		String sss = str2.replaceAll("^\\s*'|('\\s*$|',\\s*$)", "");
-		String[] strs = sss.split("-");
-		System.out.println(strs[1]);
+//		String str2 = "                   'ITEM000001-2'     ";
+//		
+//		String sss = str2.replaceAll("^\\s*'|('\\s*$|',\\s*$)", "");
+//		String[] strs = sss.split("-");
+//		System.out.println(strs[1]);
 		//System.out.println(sss.split(" ").length);
 		
 //		String[] strs = str.split("\\s+");  //正则表达式多个空格

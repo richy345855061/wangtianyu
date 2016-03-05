@@ -11,9 +11,15 @@ public class Product {
 	private String barcode;
 	private String favourStyle;  //享受所有折扣类型
 	
-	public Product(String name, float price, String style, String favourStyle, String barcode) {
+	public Product(String name, float price, int nums, String style, String favourStyle, String barcode) {
 		
 		
+		this.name = name;
+		this.price = price;
+		this.nums = nums;
+		this.style = style;
+		this.favourStyle = favourStyle;
+		this.barcode = barcode;
 	}
 	
 	

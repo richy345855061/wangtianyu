@@ -1,15 +1,16 @@
 package com.wty.method;
 import java.util.*;
+
 import com.wty.domain.*;
 
 public class FavourContext {
 
 	private Vector<Favourable> faVec;
 	private Vector<Product> products;
-	private String[] favs;
+	private Vector<FavourStyle> favs;
 	private Strategry strategry;
 	
-	public FavourContext(Vector<Product> prods, String[] fas, Strategry sg) {
+	public FavourContext(Vector<Product> prods, Vector<FavourStyle> fas, Strategry sg) {
 		
 		this.products = prods;
 		this.strategry = sg;
@@ -17,29 +18,24 @@ public class FavourContext {
 		Favourable fa = null;
 		faVec = new Vector<Favourable>();
 		
-		for (int i = 0; i < favs.length; ++i) {
+		for (int i = 0; i < favs.size(); ++i) {
 			fa = null;
 			
-			String style = favs[i];
-			String[] styles = style.split("-");
-			int[] iStyles = new int[styles.length];
-			for (int j = 0; j < styles.length; ++j) {
-				
-				iStyles[j] = Integer.parseInt(styles[j]);
-			}
+			FavourStyle fs = favs.get(i);
+			int nType = fs.getId();
 			//[0]标注是单件还是全场   [1]标注是哪种优惠
 //          String[] favours = {"S-买N赠M-2-1", "T-满N减M-100-10"};
-			switch (iStyles[1]) {
+			switch (nType) {
 			case 1://买2赠一
-				fa = new FactoryB2G1F(style).createFavour();
+				fa = new FactoryB2G1F(fs).createFavour();
 				break;
 				
 			case 2://95%
-				fa = new Factory95Dis(style).createFavour();
+				fa = new Factory95Dis(fs).createFavour();
 				break;
 				
 			case 3://满200减100
-				fa = new FactoryO200M10(style).createFavour();
+				fa = new FactoryO200M10(fs).createFavour();
 				break;
 
 			default:

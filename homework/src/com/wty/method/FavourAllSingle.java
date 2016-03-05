@@ -9,6 +9,6 @@ public class FavourAllSingle extends Strategry {
 	@Override
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("S");
 	}	
 }

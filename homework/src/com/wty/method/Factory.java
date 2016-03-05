@@ -1,15 +1,17 @@
 package com.wty.method;
 
+import com.wty.domain.FavourStyle;
+
 //工厂
 abstract class Factory {
 
-	protected String favourConcrete;  //具体是买2赠一还是买3赠一
+	protected FavourStyle favourConcrete;  //具体是买2赠一还是买3赠一
 	public abstract Favourable createFavour();
 }
 
 class FactoryB2G1F extends Factory {
 
-	public FactoryB2G1F(String favs) {
+	public FactoryB2G1F(FavourStyle favs) {
 		
 		this.favourConcrete = favs;
 	}
@@ -26,7 +28,7 @@ class FactoryB2G1F extends Factory {
 
 class Factory95Dis extends Factory {
 
-	public Factory95Dis(String favs) {
+	public Factory95Dis(FavourStyle favs) {
 		
 		this.favourConcrete = favs;
 	}
@@ -42,7 +44,7 @@ class Factory95Dis extends Factory {
 
 class FactoryO200M10 extends Factory {
 	
-	public FactoryO200M10(String favs) {
+	public FactoryO200M10(FavourStyle favs) {
 		
 		this.favourConcrete = favs;
 	}
