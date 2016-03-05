@@ -1,6 +1,6 @@
-Ãû³Æ             µ¥¼Û                 ÀàÐÍ               ÏíÊÜÕÛ¿Û                                                    ÌõÐÎÂë
-¿É¿Ú¿ÉÀÖ       3.0      ¸ö/°ü             BNGMF                    ITEM000001
-ÓðÃ«Çò           1.0      ¸ö/°ü             DISNM                    ITEM000002
-Æ»¹û               5.5      ½ï                   BNGMF-DISNM              ITEM000003
-±ý¸É               4.5      ¸ö/°ü             DISNM-ONMM               ITEM000004
-»ðÁú¹û           9.0      ½ï                   BNGMF-DISNM-ONMM         ITEM000005
+å•†å“               å•ä»·                ç±»åž‹                      æ¡å½¢ç 
+å¯å£å¯ä¹       3.0      ç“¶                        ITEM000001
+ç¾½æ¯›çƒ           1.0      ä¸ª                        ITEM000002
+è‹¹æžœ               5.5      æ–¤                       ITEM000003
+é¥¼å¹²               4.5      åŒ…                       ITEM000004
+ç«é¾™æžœ           9.0      æ–¤                       ITEM000005
