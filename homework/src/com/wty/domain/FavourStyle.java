@@ -8,11 +8,13 @@ public class FavourStyle {
 	private int id;
 	private int priority;     //优先级
 	private int morePriority; //更高优先级
-	private String favWeight; //优惠程度
+	private String favWeight; //优惠程度 2-1       100-10        95
+	private String favProducts;   //享受优惠的产品条形码  "ITEM000001-ITEM000002-ITEM000003"
 	
 
 
-	public FavourStyle(String scope, String name, int id, int priority, int morePriority, String favWeight) {
+	public FavourStyle(String name, String scope, int id, String favWeight, int priority, 
+							int morePriority, String favProducts) {
 		
 		this.scope = scope;
 		this.name = name;
@@ -20,10 +22,23 @@ public class FavourStyle {
 		this.priority = priority;
 		this.morePriority = morePriority;
 		this.favWeight = favWeight;
+		this.favProducts = favProducts;
 	}
 	
 	
 	
+	public String getFavProducts() {
+		return favProducts;
+	}
+
+
+
+	public void setFavProducts(String favProducts) {
+		this.favProducts = favProducts;
+	}
+
+
+
 	public String getScope() {
 		return scope;
 	}

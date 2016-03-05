@@ -1,7 +1,12 @@
 package com.wty.test;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.Vector;
 
 import com.wty.domain.Product;
@@ -66,8 +71,38 @@ public class Main {
 //			
 //		}
 		
-		new View2();
+		//new View2();
+		Map<String, String> mapp = new LinkedHashMap<String, String>();
+		mapp.put("0ITEM000001", "1");
+		mapp.put("2ITEM000002", "1");
+		mapp.put("5ITEM000003", "1");
+		mapp.put("1ITEM000004", "1");
+		mapp.put("4ITEM000005", "1");
+		
+		for (Entry<String, String> entry : mapp.entrySet()) {
 			
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+//		for (int i = 0; i < a.length; ++i) {
+//			
+//			System.out.println(a[i]); 
+//		}
+		
+		//		float f = 2.5f;
+//		if ((int)f == f) {
+//			
+//			System.out.println("haha1");
+//		}
+//		else {
+//			
+//			System.out.println("haha2");
+//		}
+		
+//		test1 t1 = new test1("haha");
+//		t1 = new tt().f(t1);
+//		
+//		System.out.println(t1.getName() + "  " + t1.getAge());
+		
 		
 		
 		

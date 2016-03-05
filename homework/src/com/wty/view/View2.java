@@ -4,15 +4,11 @@
 package com.wty.view;
 
 import java.io.*;
-import java.net.*;
-import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.*;
 
 import com.wty.control.ViewCl;
-import com.wty.domain.FavourStyle;
-import com.wty.domain.Product;
 import com.wty.tools.RWStrHelper;
 
 
@@ -64,9 +60,10 @@ public class View2 extends JFrame implements ActionListener{
 		//南部
 		jp3 = new JPanel(new GridLayout(1, 2));
 		jp4 = new JPanel(new GridLayout(2, 2));
-		jp3_jcb1 = new JCheckBox("S-折扣-95");
-		jp3_jcb2 = new JCheckBox("S-买赠-2-1");
-		jp3_jcb3 = new JCheckBox("T-满减-100-10");
+		//买赠-范围-优惠程度-优先级-更高优先级
+		jp3_jcb1 = new JCheckBox("折扣-单件-95-2-1");
+		jp3_jcb2 = new JCheckBox("买赠-单件-2~1-1-2");
+		jp3_jcb3 = new JCheckBox("满减-单件-30~5-2-0");
 		jp3_jb1 = new JButton("结算");
 		
 		jbVec.add(jp3_jcb1);
@@ -97,8 +94,6 @@ public class View2 extends JFrame implements ActionListener{
 		this.setSize(800,600);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();   //获取当前屏幕大小
-		Dimension frameSize = this.getPreferredSize();//获取当前窗口大小
 		this.setLocation(50, 50);//保持窗口弹出位置居中
 		//this.setIconImage((new ImageIcon("image/头像.GIF").getImage()));
 		this.setTitle("Thoughtworks-homework");
@@ -114,17 +109,12 @@ public class View2 extends JFrame implements ActionListener{
 			File file = jfc.getSelectedFile();
 			
 			filePath = file.getAbsolutePath();
-			Vector<String> strVec = RWStrHelper.readTxt(filePath);
-			for (int i = 0; i < strVec.size(); ++i) {
-				
-				jp2_jtf1.append(strVec.get(i) + "\n");
-			}
+			
+			jp2_jtf1.append(RWStrHelper.getAllData(filePath));
 			
 		}
 		if (e.getSource() == jp3_jb1) {
 
-						
-			
 			Vector<String> strVec = new Vector<String>();
 			for (int k = 0; k < jbVec.size(); ++k) {
 				
@@ -135,13 +125,8 @@ public class View2 extends JFrame implements ActionListener{
 				}
 			}
 			
-			Vector<FavourStyle> fsVec = RWStrHelper.creObjByCkb(strVec);
-		
-			
-			Map<String, Integer> proMap = RWStrHelper.readBarData(filePath);
-			Vector<Product> proVec = RWStrHelper.creObjByBarcode(proMap);
-			ViewCl vc = new ViewCl(proVec, fsVec);
-			vc.resultCl();
+			//交给处理类处理
+			new ViewCl(filePath, strVec);
 		}
 	}
 }

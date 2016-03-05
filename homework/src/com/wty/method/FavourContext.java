@@ -23,6 +23,9 @@ public class FavourContext {
 			
 			FavourStyle fs = favs.get(i);
 			int nType = fs.getId();
+			
+			//优惠数据
+//			String[] favStr = fs.getFavWeight().split("-");
 			//[0]标注是单件还是全场   [1]标注是哪种优惠
 //          String[] favours = {"S-买N赠M-2-1", "T-满N减M-100-10"};
 			switch (nType) {

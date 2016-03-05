@@ -10,12 +10,12 @@ import com.wty.domain.Product;
 public class RWStrHelper {
 
 	
-	static public Vector<String> readTxt(String fileName) {
+	static public Vector<String> readTxt(String filePath) {
 		
 		
 		Vector<String> strVec = new Vector<String>();
 		String encoding = "GBK";
-		File file = new File(fileName);
+		File file = new File(filePath);
 		InputStreamReader isr = null;
 		BufferedReader br = null;
 		
@@ -54,12 +54,26 @@ public class RWStrHelper {
 		return strVec;
 	}
 	
-	static public Map<String, Integer> readBarData(String filename) {
+	
+	static public String getAllData(String filePath) {
 		
-				
-		Map<String, Integer> proMap = new HashMap<String, Integer>();
+		Vector<String> strVec = readTxt(filePath);
 		
-		Vector<String> strVec = readTxt(filename);
+		String str = "";
+		for (int i = 0; i < strVec.size(); ++i) {
+			
+			str += (strVec.get(i) + "\n");
+		}
+		
+		return str;
+	}
+	
+	static public Map<String, Integer> readBarData(String filePath) {
+		
+		//LinkedHashMap 按输入顺序存储
+		Map<String, Integer> proMap = new LinkedHashMap<String, Integer>();
+		
+		Vector<String> strVec = readTxt(filePath);
 
 		for (int i = 0; i < strVec.size(); ++i) {
 			
@@ -102,7 +116,8 @@ public class RWStrHelper {
 
 	//通过界面选择的优惠方式封闭成类
 	static public Vector<FavourStyle> creObjByCkb(Vector<String> strVec) {
-		
+		//S-买N赠M-2-1            现在是   买赠-单件-2~1-2-1
+						//    //买赠-范围-优惠程度-优先级-更高优先级
 		Vector<FavourStyle> fsVec = new Vector<FavourStyle>();
 		
 		Vector<String> fsStrVec = readTxt("favour.txt");
@@ -110,22 +125,22 @@ public class RWStrHelper {
 		for (int i = 0; i < strVec.size(); ++i) {
 			
 			String strTemp = strVec.get(i);
-			String[] fsObj1 = strTemp.split("-");
-			String favWeight = strTemp.substring(strTemp.indexOf("-")+1);
-			String favWeight2 = favWeight.substring(favWeight.indexOf("-")+1);
+			String[] fsObj1 = strTemp.split("-");   //买赠-范围-优惠程度-优先级-更高优先级
 			
 			for (int j = 0; j < fsStrVec.size(); ++j) {
 				
+				//折扣名字       编号                  享受优惠商品条形码
 				String[] fsObj2 = fsStrVec.get(j).split("\\s+");
 				
-				if (fsObj1[1].equals(fsObj2[0])) {
-					
+				if (fsObj1[0].equals(fsObj2[0])) {
+
 					fsVec.add(new FavourStyle(fsObj1[0],
-							fsObj2[0], 
+							fsObj1[1], 
 							Integer.parseInt(fsObj2[1]), 
-							Integer.parseInt(fsObj2[2]), 
-							Integer.parseInt(fsObj2[3]),
-							favWeight2));
+							fsObj1[2], 
+							Integer.parseInt(fsObj1[3]),
+							Integer.parseInt(fsObj1[4]),
+							fsObj2[2]));
 				}
 			}
 			
@@ -143,6 +158,7 @@ public class RWStrHelper {
 
 		for (Map.Entry<String, Integer> entry : proMap.entrySet()) {
 			
+			 System.out.println("!!!" + entry.getKey());
 			for (int i = 0; i < strVec.size(); ++i) {
 				
 				String[] proObj = strVec.get(i).split("\\s+");
@@ -151,11 +167,43 @@ public class RWStrHelper {
 				if (entry.getKey().equals(proObj[proObj.length-1])) {
 						
 					proVec.add(new Product(proObj[0], Float.parseFloat(proObj[1]), 
-							entry.getValue(), proObj[2], proObj[3], proObj[4]));
+							entry.getValue(), proObj[2], proObj[3]));
 				}
 				
 			}
 		}
 		return proVec;	
+	}
+	
+	static public void printProduct(Vector<Product> proVec) {
+		
+		
+		for (int i = 0; i < proVec.size(); ++i) {
+			
+			Product p = proVec.get(i);
+			System.out.println(p.getName() + "-" +
+					           p.getNums() + "-" +
+					           p.getPrice() + "-" +
+					           p.getStyle() + "-" +
+					           p.getBarcode() + "-" +
+					           p.getTotal() + "-" +
+					           p.getFavourMoney() + "-" +
+					           p.getBuyFree());
+		}
+	}
+	
+	static public void printFavour(Vector<FavourStyle> favVec) {
+		
+		for (int i = 0; i < favVec.size(); ++i) {
+			
+			FavourStyle p = favVec.get(i);
+			System.out.println(p.getScope() + "-" +
+					           p.getName() + "-" +
+					           p.getId() + "-" +
+					           p.getPriority() + "-" +
+					           p.getMorePriority() + "-" +
+					           p.getFavWeight() + "-" +
+					           p.getFavProducts());
+		}
 	}
 }

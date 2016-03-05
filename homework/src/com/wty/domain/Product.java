@@ -5,40 +5,62 @@ public class Product {
 
 	
 	private String name;
-	private int nums;
+	private float nums;
 	private float price;
 	private String style;
 	private String barcode;
-	private String favourStyle;  //享受所有折扣类型
+	private float total;         //小计
+	private float favourMoney;   //优惠可能没有  用String类型 可设置为 " " 则不可见
+	private float buyFree;       //买赠数量    因为可能是斤 所以用float
 	
-	public Product(String name, float price, int nums, String style, String favourStyle, String barcode) {
+	public Product(String name, float price, float nums, String style, 
+								String barcode) {
 		
 		
-		this.name = name;
-		this.price = price;
-		this.nums = nums;
-		this.style = style;
-		this.favourStyle = favourStyle;
-		this.barcode = barcode;
+		this.name = name;                       //名字
+		this.price = price;                     //单价
+		this.nums = nums;                       //数量
+		this.style = style;                     //单位类型
+		this.barcode = barcode;                 //条形码
+		this.total = 0.0f;                      //小计
+		this.favourMoney = 0.0f;                //节省
+		this.buyFree = 0.0f;                    //赠
 	}
 	
-	
-	public String getFavourStyle() {
-		return favourStyle;
+	public float getBuyFree() {
+		return buyFree;
 	}
-	public void setFavourStyle(String favourStyle) {
-		this.favourStyle = favourStyle;
+
+	public void setBuyFree(float buyFree) {
+		this.buyFree = buyFree;
 	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
+	public float getFavourMoney() {
+		return favourMoney;
+	}
+
+	public void setFavourMoney(float favourMoney) {
+		this.favourMoney = favourMoney;
+	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getNums() {
+	public float getNums() {
 		return nums;
 	}
-	public void setNums(int nums) {
+	public void setNums(float nums) {
 		this.nums = nums;
 	}
 	public float getPrice() {
