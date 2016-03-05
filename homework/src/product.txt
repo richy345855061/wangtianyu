@@ -1,0 +1,6 @@
+名称             单价                 类型               享受折扣                                                    条形码
+可口可乐       3.0      个/包             BNGMF                    ITEM000001
+羽毛球           1.0      个/包             DISNM                    ITEM000002
+苹果               5.5      斤                   BNGMF-DISNM              ITEM000003
+饼干               4.5      个/包             DISNM-ONMM               ITEM000004
+火龙果           9.0      斤                   BNGMF-DISNM-ONMM         ITEM000005
