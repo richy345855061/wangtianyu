@@ -1,4 +1,5 @@
 package com.wty.control;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import com.wty.domain.*;
@@ -6,25 +7,25 @@ import com.wty.method.*;
 import com.wty.tools.RWStrHelper;
 
 
-public class ViewCl {
+public class ViewManage {
 
 	private String filePath;
 	private Vector<String> strVec;
 	private Vector<Product> finalProInfo;
 	
-	public ViewCl(String fp, Vector<String> sv) {
+	public ViewManage(String fp, Vector<String> sv) {
 		
 		this.filePath = fp;
 		this.strVec = sv;
 		
-		this.doPro();
+		//this.doPro();
 	}
 	
 	public Vector<Product> getFinalProInfo() {
 		return finalProInfo;
 	}
 	
-	private void doPro() {
+	public void calProductList() {
 		
 		//得到FavourStyle类集合
 		Vector<FavourStyle> fsVec = RWStrHelper.creObjByCkb(strVec);
@@ -59,9 +60,9 @@ public class ViewCl {
 			Product p = finalProInfo.get(i);
 		
 			String s1 = "名称:" + p.getName() + "," +
-						"数量:" + p.getNums() + p.getStyle() + "," +
-						"单价:" + p.getPrice() + "(元)," +
-						"小计:" + p.getTotal() +"(元)";
+						"数量:" + ((p.getNums() == (int)(p.getNums()))?(int)(p.getNums())+"":p.getNums()) + p.getStyle() + "," +
+						"单价:" + new  DecimalFormat("##0.00").format(p.getPrice()) + "(元)," +
+						"小计:" + new  DecimalFormat("##0.00").format(p.getTotal()) +"(元)";
 			if (p.getBuyFree() > 0.0000001) {
 				
 				bIsBuyGetFree = true;
@@ -71,7 +72,7 @@ public class ViewCl {
 			String s2 = "";
 			if (p.getFavourMoney() > 0.0000001) {
 				
-				s2 = ",节省" + p.getFavourMoney() + "(元)";
+				s2 = ",节省" + new  DecimalFormat("##0.00").format(p.getFavourMoney()) + "(元)";
 			}
 			finalInfo += (s1 + s2 + "\n");
 			totalAll += p.getTotal(); //总和
@@ -85,17 +86,17 @@ public class ViewCl {
 			for (int i = 0; i < proBuyGetFree.size(); ++i) {
 				
 				Product p = proBuyGetFree.get(i);
-				String ss = "名称:" + p.getName() + "," + "数量:" + p.getBuyFree() + p.getStyle() + "\n";
+				String ss = "名称:" + p.getName() + "," + "数量:" + ((p.getBuyFree() == (int)(p.getBuyFree()))?(int)(p.getBuyFree())+"":p.getBuyFree()) + p.getStyle() + "\n";
 				finalInfo += ss;
 			}
 		}
 		
 		finalInfo += "---------------------------\n";
-		finalInfo += "总计:" + totalAll + "(元)\n";
+		finalInfo += "总计:" + new  DecimalFormat("##0.00").format(totalAll) + "(元)\n";
 		
 		if ((favourMoneyAll + Product.sAllOverFree) > 0.0000001) {
 			
-			finalInfo += "节省:" + (favourMoneyAll + Product.sAllOverFree) + "(元)\n";
+			finalInfo += "节省:" + new  DecimalFormat("##0.00").format(favourMoneyAll + Product.sAllOverFree) + "(元)\n";
 		}
 		finalInfo += "*******************************************************";
 		

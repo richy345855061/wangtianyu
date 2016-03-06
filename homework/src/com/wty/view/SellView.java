@@ -9,13 +9,13 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.xml.ws.handler.MessageContext.Scope;
 
-import com.wty.control.ViewCl;
+import com.wty.control.ViewManage;
 import com.wty.tools.RWStrHelper;
 
 
 import java.awt.*;
 import java.awt.event.*;
-public class View2 extends JFrame implements ActionListener{
+public class SellView extends JFrame implements ActionListener{
 
 	//定义北部的组件
 	JPanel jp1;  
@@ -53,10 +53,10 @@ public class View2 extends JFrame implements ActionListener{
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new View2();
+		new SellView();
 	}
 	
-	public View2()
+	public SellView()
 	{
 		
 		jbVec = new Vector<JCheckBox>();
@@ -102,7 +102,8 @@ public class View2 extends JFrame implements ActionListener{
 		jp3_jcb1 = new JCheckBox("折扣(N折表示为:N)");
 		jp3_jcb2 = new JCheckBox("买赠(买N赠M为:N~M)");
 		jp3_jcb3 = new JCheckBox("满减(满N减M为:N~M)");
-		jp3_jb1 = new JButton("结算");
+		jp3_jb1 = new JButton("打印小票");
+		jp3_jb1.setFont(new java.awt.Font("Dialog", 1, 30));
 		
 //		JPanel jp4_jp1, jp4_jp2, jp4_jp3;
 //		JComboBox  jp4_jp1_jcb1, jp4_jp1_jcb2, jp4_jp1_jcb3;
@@ -119,14 +120,14 @@ public class View2 extends JFrame implements ActionListener{
 		//第二行
 		jp4_jp1_jcb1 = new JComboBox();
 		jp4_jp1_jcb1.addItem("单件");
-		jp4_jp1_jcb1.addItem("全部");
+		jp4_jp1_jcb1.addItem("全场");
 		jp4_jp1_jcb1.setSelectedItem("单件");
 		jp4_jp1_jcb2 = new JComboBox();
 		jp4_jp1_jcb2.addItem("单件");
 		jp4_jp1_jcb2.setSelectedItem("单件");
 		jp4_jp1_jcb3 = new JComboBox();
 		jp4_jp1_jcb3.addItem("单件");
-		jp4_jp1_jcb3.addItem("全部");
+		jp4_jp1_jcb3.addItem("全场");
 		jp4_jp1_jcb3.setSelectedItem("单件");
 		
 		jp4_jp1_jtf1 = new JTextField("95");
@@ -266,7 +267,7 @@ public class View2 extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(50, 50);//保持窗口弹出位置居中
 		//this.setIconImage((new ImageIcon("image/头像.GIF").getImage()));
-		this.setTitle("Thoughtworks-homework");
+		this.setTitle("王天瑜的家庭作业");
 		this.setVisible(true);
 	}
 
@@ -311,7 +312,8 @@ public class View2 extends JFrame implements ActionListener{
 //				System.out.println(strVec.get(i));
 //			}
 			//交给处理类处理
-			ViewCl vc = new ViewCl(filePath, strVec);
+			ViewManage vc = new ViewManage(filePath, strVec);
+			vc.calProductList();
 			jp2_jtf2.setText("");
 			jp2_jtf2.append("打印小票结果:\n" + vc.getFinalInfo());
 		}

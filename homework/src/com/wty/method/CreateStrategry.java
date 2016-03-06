@@ -23,6 +23,14 @@ public class CreateStrategry {
 		nStyle = 0;
 		strategry = null;
 	}
+	
+	public Strategry getStrategry() {
+		return strategry;
+	}
+
+	public void setStrategry(Strategry strategry) {
+		this.strategry = strategry;
+	}
 
 	public Vector<Product> getProducts() {
 		return products;
@@ -37,7 +45,7 @@ public class CreateStrategry {
 		return finalProInfo;
 	}
 	
-	private void judegtStyle() {
+	public void judegtStyle() {
 		
 		int size = favours.size();
 		int nS = 0;
@@ -48,13 +56,13 @@ public class CreateStrategry {
 				
 				nS++;
 			}
-			else if ("全部".equals(str)) {
+			else if ("全场".equals(str)) {
 				
 				nT++;
 			}
 		}
 		
-		System.out.println("全部" + nT + " 单件" + nS);
+		System.out.println("全场" + nT + " 单件" + nS);
 		
 		if (nS == size && 0 == nT && size != 0) {
 			
@@ -67,7 +75,7 @@ public class CreateStrategry {
 		else if (size == 0) {
 			
 			//System.out.println("haha");
-			strategry = new FavourNone();
+			strategry = new FavourNoSingleTotal();
 		}
 		else {
 			

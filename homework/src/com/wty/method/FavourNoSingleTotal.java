@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import com.wty.domain.Product;
 
-public class FavourNone extends Strategry{
+public class FavourNoSingleTotal extends Strategry{
 
 	@Override
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {

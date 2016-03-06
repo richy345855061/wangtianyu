@@ -22,7 +22,7 @@ class FactoryB2G1F extends Factory {
 	public Favourable createFavour() {
 		// TODO Auto-generated method stub
 		
-		return new FavourB2G1F(favourConcrete);
+		return new FavourBuyForFree(favourConcrete);
 	}
 	
 	
@@ -40,7 +40,7 @@ class Factory95Dis extends Factory {
 	@Override
 	public Favourable createFavour() {
 		// TODO Auto-generated method stub
-		return new Favour95Dis(favourConcrete);
+		return new FavourDiscount(favourConcrete);
 	}
 	
 	
@@ -57,7 +57,7 @@ class FactoryO200M10 extends Factory {
 	@Override
 	public Favourable createFavour() {
 		// TODO Auto-generated method stub
-		return new FavourO200M10(favourConcrete);
+		return new FavourOverMinus(favourConcrete);
 	}
 	
 	
