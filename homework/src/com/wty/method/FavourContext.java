@@ -59,7 +59,7 @@ public class FavourContext {
 		//将每个商品进行判断处理
 		//例如结果如下
 		//可口可乐
-		
+		Product.sAllOverFree = 0.0f;
 		strategry.getResult(products, faVec);
 		this.finalProInfo = strategry.getFinalProInfo();		
 	}

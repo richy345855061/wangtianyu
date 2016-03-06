@@ -41,14 +41,22 @@ public class FavourAllSingle extends Strategry {
 //			p.getTotal() + "-" +
 //			p.getFavourMoney());
 			
-			
-			
-			for (int i = 0; i < favv.size(); ++i) {
+			if (favv.size() > 0) {
 				
-				Favourable f = favv.get(i);
-				//System.out.println(f.getFavourConcrete().getName());
-				f.favourSingle(p);
+				for (int i = 0; i < favv.size(); ++i) {
+					
+					Favourable f = favv.get(i);
+					//System.out.println(f.getFavourConcrete().getName());
+					f.favourSingle(p);
+				}
 			}
+			else {
+				
+				//如果一个优惠都不满足
+				p.getResultByself();
+			}
+			
+			
 			
 //			System.out.println(p.getName() + "-" +
 //			p.getNums() + "-" +

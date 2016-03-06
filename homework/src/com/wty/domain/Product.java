@@ -3,6 +3,7 @@ package com.wty.domain;
 //产品类
 public class Product {
 
+	public static float sAllOverFree = 0.0f;    //全部商品满减 属于全部商品的优惠
 	
 	private String name;
 	private float nums;

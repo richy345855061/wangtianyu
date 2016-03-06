@@ -11,7 +11,17 @@ public class FavourAllTotal extends Strategry {
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("t");
+		finalProInfo = new Vector<Product>();
+		
+		faVec = filterFavourByPriority(faVec);
+		
+		System.out.println(faVec.size());
+		for (int i = 0; i < faVec.size(); ++i) {
+			
+			Favourable f = faVec.get(i);
+			f.favourTtoal(prods);
+		}
+		finalProInfo = prods;
 //		System.out.println("产品信息");
 //		for (int i = 0; i < prods.size(); ++i) {
 //			

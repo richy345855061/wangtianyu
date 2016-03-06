@@ -25,6 +25,7 @@ public class View2 extends JFrame implements ActionListener{
 	//中部
 	JPanel jp2;
 	JTextArea jp2_jtf1, jp2_jtf2;
+	JScrollPane jp2_jtf1_jsp1, jp2_jtf1_jsp2;
 	
 	//南部
 	JPanel jp3, jp4;
@@ -77,7 +78,8 @@ public class View2 extends JFrame implements ActionListener{
 		
 		//定义北部的组件
 		jp1 = new JPanel(new FlowLayout());  
-		jp1_jbl1 = new JLabel("Thoughtworks sell", JLabel.CENTER);   
+		jp1_jbl1 = new JLabel("Thoughtworks sell", JLabel.CENTER);
+		jp1_jbl1.setFont(new java.awt.Font("Dialog", 1, 18));
 		jp1_jb1 = new JButton("读取条形码");
 		
 		//中部
@@ -85,16 +87,21 @@ public class View2 extends JFrame implements ActionListener{
 		jp2_jtf1 = new JTextArea("条形码信息:\n");
 		jp2_jtf1.setEditable(false);
 		jp2_jtf1.setBackground(new Color(184,211,237));
+		jp2_jtf1.setFont(new java.awt.Font("Dialog", 1, 13));
 		jp2_jtf2 = new JTextArea("打印小票结果:\n");
 		jp2_jtf2.setEditable(false);
 		jp2_jtf2.setBackground(new Color(93,131,173));
+		jp2_jtf2.setFont(new java.awt.Font("Dialog", 1, 13));
+		
+		jp2_jtf1_jsp1 = new JScrollPane(jp2_jtf1);
+		jp2_jtf1_jsp2 = new JScrollPane(jp2_jtf2);
 		//南部
 		jp3 = new JPanel(new GridLayout(2, 1));
 		jp4 = new JPanel(new GridLayout(4, 0));
 		//买赠-范围-优惠程度-优先级-更高优先级
-		jp3_jcb1 = new JCheckBox("折扣");
-		jp3_jcb2 = new JCheckBox("买赠");
-		jp3_jcb3 = new JCheckBox("满减");
+		jp3_jcb1 = new JCheckBox("折扣(N折表示为:N)");
+		jp3_jcb2 = new JCheckBox("买赠(买N赠M为:N~M)");
+		jp3_jcb3 = new JCheckBox("满减(满N减M为:N~M)");
 		jp3_jb1 = new JButton("结算");
 		
 //		JPanel jp4_jp1, jp4_jp2, jp4_jp3;
@@ -116,7 +123,6 @@ public class View2 extends JFrame implements ActionListener{
 		jp4_jp1_jcb1.setSelectedItem("单件");
 		jp4_jp1_jcb2 = new JComboBox();
 		jp4_jp1_jcb2.addItem("单件");
-		jp4_jp1_jcb2.addItem("全部");
 		jp4_jp1_jcb2.setSelectedItem("单件");
 		jp4_jp1_jcb3 = new JComboBox();
 		jp4_jp1_jcb3.addItem("单件");
@@ -162,8 +168,8 @@ public class View2 extends JFrame implements ActionListener{
 		jp1.add(jp1_jbl1);
 		jp1.add(jp1_jb1);
 		
-		jp2.add(jp2_jtf1);
-		jp2.add(jp2_jtf2);
+		jp2.add(jp2_jtf1_jsp1);
+		jp2.add(jp2_jtf1_jsp2);
 		
 		jp4.add(jp4_jbl1);
 		jp4.add(jp4_jbl2);
@@ -206,7 +212,8 @@ public class View2 extends JFrame implements ActionListener{
 					try {
 						
 						String s = evt.getItem().toString();
-						str1 = s;
+						scpeVec.set(0, s);
+						System.out.println(s);
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -224,7 +231,7 @@ public class View2 extends JFrame implements ActionListener{
 							try {
 								
 								String s = evt.getItem().toString();
-								str2 = s;
+								scpeVec.set(1, s);
 							} catch (Exception e) {
 								// TODO: handle exception
 							}
@@ -242,7 +249,7 @@ public class View2 extends JFrame implements ActionListener{
 					try {
 						
 						String s = evt.getItem().toString();
-						str3 = s;
+						scpeVec.set(2, s);
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -272,7 +279,12 @@ public class View2 extends JFrame implements ActionListener{
 			jfc.showDialog(new JLabel(), "选择");
 			File file = jfc.getSelectedFile();
 			
-			filePath = file.getAbsolutePath();
+			try {
+				filePath = file.getAbsolutePath();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			
 			
 			jp2_jtf1.append(RWStrHelper.getAllData(filePath));
 			
@@ -284,7 +296,7 @@ public class View2 extends JFrame implements ActionListener{
 				
 				if (jbVec.get(k).isSelected()) {
 					
-					String st = jbVec.get(k).getText() + "-" +
+					String st = jbVec.get(k).getText().substring(0, 2) + "-" +
 								scpeVec.get(k) + "-" + 
 								favWightVec.get(k).getText() + "-" +
 								priVec.get(k).getText() + "-" +

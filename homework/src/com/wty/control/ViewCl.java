@@ -93,9 +93,9 @@ public class ViewCl {
 		finalInfo += "---------------------------\n";
 		finalInfo += "总计:" + totalAll + "(元)\n";
 		
-		if (favourMoneyAll > 0.0000001) {
+		if ((favourMoneyAll + Product.sAllOverFree) > 0.0000001) {
 			
-			finalInfo += "节省:" + favourMoneyAll + "(元)\n";
+			finalInfo += "节省:" + (favourMoneyAll + Product.sAllOverFree) + "(元)\n";
 		}
 		finalInfo += "*******************************************************";
 		

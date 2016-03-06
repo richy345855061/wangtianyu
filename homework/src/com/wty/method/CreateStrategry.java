@@ -54,7 +54,7 @@ public class CreateStrategry {
 			}
 		}
 		
-		System.out.println("数量" + nT + " " + nS);
+		System.out.println("全部" + nT + " 单件" + nS);
 		
 		if (nS == size && 0 == nT && size != 0) {
 			

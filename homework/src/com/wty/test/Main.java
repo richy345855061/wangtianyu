@@ -72,16 +72,24 @@ public class Main {
 //		}
 		
 		//new View2();
-		Map<String, String> mapp = new LinkedHashMap<String, String>();
-		mapp.put("0ITEM000001", "1");
-		mapp.put("2ITEM000002", "1");
-		mapp.put("5ITEM000003", "1");
-		mapp.put("1ITEM000004", "1");
-		mapp.put("4ITEM000005", "1");
+		String s1 = "a";
+		String s2 = "b";
+		String s3 = "c";
 		
-		for (Entry<String, String> entry : mapp.entrySet()) {
+		Vector<String> sVec = new Vector<String>();
+		sVec.add(s1);
+		sVec.add(s2);
+		sVec.add(s3);
+
+		Vector<String> sVec1 = new Vector<String>();
+		sVec1.add("d");
+		sVec1.add("e");
+		
+		sVec.addAll(sVec1);
+		
+		for (int i = 0; i < sVec.size(); ++i) {
 			
-			System.out.println(entry.getKey() + " " + entry.getValue());
+			System.out.println(sVec.get(i));
 		}
 //		for (int i = 0; i < a.length; ++i) {
 //			

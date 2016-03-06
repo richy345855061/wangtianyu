@@ -11,13 +11,14 @@ public class FavourNone extends Strategry{
 		// TODO Auto-generated method stub
 		
 		finalProInfo = new Vector<Product>();
-		System.out.println("caonima");
 		for (int i = 0; i < prods.size(); ++i) {
 			
 			Product p = prods.get(i);
 			p.getResultByself();
 			finalProInfo.add(p);
 		}
+		
+		Product.sAllOverFree = 0.0f;  //ÇåÁã
 	}
 
 }
