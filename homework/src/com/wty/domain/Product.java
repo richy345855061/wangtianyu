@@ -82,5 +82,9 @@ public class Product {
 		this.barcode = barcode;
 	}
 	
-	
+	//当不享受任何优惠的时候调用自身的计算方法
+	public void getResultByself() {
+		
+		this.total = this.price * this.nums;
+	}
 }

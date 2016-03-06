@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.Vector;
 
 import javax.swing.*;
+import javax.xml.ws.handler.MessageContext.Scope;
 
 import com.wty.control.ViewCl;
 import com.wty.tools.RWStrHelper;
@@ -30,7 +31,23 @@ public class View2 extends JFrame implements ActionListener{
 	JCheckBox jp3_jcb1, jp3_jcb2, jp3_jcb3;
 	JButton jp3_jb1;
 	
+	//优惠部分
+	JPanel jp4_jp1, jp4_jp2, jp4_jp3;
+	JComboBox  jp4_jp1_jcb1, jp4_jp1_jcb2, jp4_jp1_jcb3;
+	JTextField jp4_jp1_jtf1, jp4_jp1_jtf2, jp4_jp1_jtf3;
+	JTextField jp4_jp2_jtf1, jp4_jp2_jtf2, jp4_jp2_jtf3, jp4_jp2_jtf4;
+	JTextField jp4_jp3_jtf1, jp4_jp3_jtf2, jp4_jp3_jtf3, jp4_jp3_jtf4;
+	JLabel jp4_jbl1, jp4_jbl2, jp4_jbl3, jp4_jbl4, jp4_jbl5;
+	
+	///
+	String str1, str2, str3;
+	
 	Vector<JCheckBox> jbVec;
+	Vector<String> scpeVec;
+	Vector<JTextField> favWightVec;
+	Vector<JTextField> priVec;
+	Vector<JTextField> morePrijbVec;
+	
 	String filePath;
 	
 	public static void main(String[] args) {
@@ -42,6 +59,20 @@ public class View2 extends JFrame implements ActionListener{
 	{
 		
 		jbVec = new Vector<JCheckBox>();
+		scpeVec = new Vector<String>();
+		favWightVec = new Vector<JTextField>();
+		priVec = new Vector<JTextField>();
+		morePrijbVec = new Vector<JTextField>();
+		
+		str1 = "单件";
+		str2 = "单件";
+		str3 = "单件";
+		
+		scpeVec.add(str1);
+		scpeVec.add(str2);
+		scpeVec.add(str3);
+
+
 		filePath = "";
 		
 		//定义北部的组件
@@ -58,13 +89,70 @@ public class View2 extends JFrame implements ActionListener{
 		jp2_jtf2.setEditable(false);
 		jp2_jtf2.setBackground(new Color(93,131,173));
 		//南部
-		jp3 = new JPanel(new GridLayout(1, 2));
-		jp4 = new JPanel(new GridLayout(2, 2));
+		jp3 = new JPanel(new GridLayout(2, 1));
+		jp4 = new JPanel(new GridLayout(4, 0));
 		//买赠-范围-优惠程度-优先级-更高优先级
-		jp3_jcb1 = new JCheckBox("折扣-单件-95-2-1");
-		jp3_jcb2 = new JCheckBox("买赠-单件-2~1-1-2");
-		jp3_jcb3 = new JCheckBox("满减-单件-30~5-2-0");
+		jp3_jcb1 = new JCheckBox("折扣");
+		jp3_jcb2 = new JCheckBox("买赠");
+		jp3_jcb3 = new JCheckBox("满减");
 		jp3_jb1 = new JButton("结算");
+		
+//		JPanel jp4_jp1, jp4_jp2, jp4_jp3;
+//		JComboBox  jp4_jp1_jcb1, jp4_jp1_jcb2, jp4_jp1_jcb3;
+//		JTextField jp4_jp1_jtf1, jp4_jp1_jtf2, jp4_jp1_jtf3;
+//		JTextField jp4_jp2_jtf1, jp4_jp2_jtf2, jp4_jp2_jtf3,;
+//		JTextField jp4_jp3_jtf1, jp4_jp3_jtf2, jp4_jp3_jtf3,;
+//		JLabel jp4_jbl1, jp4_jbl2, jp4_jbl3, jp4_jbl4;
+		//第一行
+		jp4_jbl1 = new JLabel("折扣类型", JLabel.CENTER); 
+		jp4_jbl2 = new JLabel("折扣范围", JLabel.CENTER); 
+		jp4_jbl3 = new JLabel("折扣力度(95折或买2赠1)", JLabel.CENTER); 
+		jp4_jbl4 = new JLabel("优先级", JLabel.CENTER); 
+		jp4_jbl5 = new JLabel("优先级相同时更高优先", JLabel.CENTER); 
+		//第二行
+		jp4_jp1_jcb1 = new JComboBox();
+		jp4_jp1_jcb1.addItem("单件");
+		jp4_jp1_jcb1.addItem("全部");
+		jp4_jp1_jcb1.setSelectedItem("单件");
+		jp4_jp1_jcb2 = new JComboBox();
+		jp4_jp1_jcb2.addItem("单件");
+		jp4_jp1_jcb2.addItem("全部");
+		jp4_jp1_jcb2.setSelectedItem("单件");
+		jp4_jp1_jcb3 = new JComboBox();
+		jp4_jp1_jcb3.addItem("单件");
+		jp4_jp1_jcb3.addItem("全部");
+		jp4_jp1_jcb3.setSelectedItem("单件");
+		
+		jp4_jp1_jtf1 = new JTextField("95");
+		jp4_jp1_jtf1.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp1_jtf2 = new JTextField("2~1");
+		jp4_jp1_jtf2.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp1_jtf3 = new JTextField("30~5");
+		jp4_jp1_jtf3.setHorizontalAlignment(JTextField.CENTER);
+		favWightVec.add(jp4_jp1_jtf1);
+		favWightVec.add(jp4_jp1_jtf2);
+		favWightVec.add(jp4_jp1_jtf3);
+		
+		jp4_jp2_jtf1 = new JTextField("1");
+		jp4_jp2_jtf1.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp2_jtf2 = new JTextField("2");
+		jp4_jp2_jtf2.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp2_jtf3 = new JTextField("2");
+		jp4_jp2_jtf3.setHorizontalAlignment(JTextField.CENTER);
+		priVec.add(jp4_jp2_jtf1);
+		priVec.add(jp4_jp2_jtf2);
+		priVec.add(jp4_jp2_jtf3);
+		
+		jp4_jp3_jtf1 = new JTextField("2");
+		jp4_jp3_jtf1.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp3_jtf2 = new JTextField("1");
+		jp4_jp3_jtf2.setHorizontalAlignment(JTextField.CENTER);
+		jp4_jp3_jtf3 = new JTextField("0");
+		jp4_jp3_jtf3.setHorizontalAlignment(JTextField.CENTER);
+		morePrijbVec.add(jp4_jp3_jtf1);
+		morePrijbVec.add(jp4_jp3_jtf2);
+		morePrijbVec.add(jp4_jp3_jtf3);
+		
 		
 		jbVec.add(jp3_jcb1);
 		jbVec.add(jp3_jcb2);
@@ -77,15 +165,90 @@ public class View2 extends JFrame implements ActionListener{
 		jp2.add(jp2_jtf1);
 		jp2.add(jp2_jtf2);
 		
+		jp4.add(jp4_jbl1);
+		jp4.add(jp4_jbl2);
+		jp4.add(jp4_jbl3);
+		jp4.add(jp4_jbl4);
+		jp4.add(jp4_jbl5);
+		
 		jp4.add(jp3_jcb1);
+		jp4.add(jp4_jp1_jcb1);
+		jp4.add(jp4_jp1_jtf1);
+		jp4.add(jp4_jp2_jtf1);
+		jp4.add(jp4_jp3_jtf1);
+		
 		jp4.add(jp3_jcb2);
+		jp4.add(jp4_jp1_jcb2);
+		jp4.add(jp4_jp1_jtf2);
+		jp4.add(jp4_jp2_jtf2);
+		jp4.add(jp4_jp3_jtf2);
+//		
 		jp4.add(jp3_jcb3);
+		jp4.add(jp4_jp1_jcb3);
+		jp4.add(jp4_jp1_jtf3);
+		jp4.add(jp4_jp2_jtf3);
+		jp4.add(jp4_jp3_jtf3);
+		
 		jp3.add(jp4);
 		jp3.add(jp3_jb1);
 
 		//响应用户点击登录
 		jp1_jb1.addActionListener(this);
 		jp3_jb1.addActionListener(this);
+		jp4_jp1_jcb1.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent evt) {
+				// TODO Auto-generated method stub
+				
+				if (evt.getStateChange() == ItemEvent.SELECTED) {
+					
+					try {
+						
+						String s = evt.getItem().toString();
+						str1 = s;
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+			}
+		});
+		jp4_jp1_jcb2.addItemListener(new ItemListener() {
+					
+					@Override
+					public void itemStateChanged(ItemEvent evt) {
+						// TODO Auto-generated method stub
+						
+						if (evt.getStateChange() == ItemEvent.SELECTED) {
+							
+							try {
+								
+								String s = evt.getItem().toString();
+								str2 = s;
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+						}
+					}
+				});
+		jp4_jp1_jcb3.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent evt) {
+				// TODO Auto-generated method stub
+				
+				if (evt.getStateChange() == ItemEvent.SELECTED) {
+					
+					try {
+						
+						String s = evt.getItem().toString();
+						str3 = s;
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+			}
+		});
 
 		this.add(jp1,"North");
 		this.add(jp2,"Center");
@@ -99,6 +262,7 @@ public class View2 extends JFrame implements ActionListener{
 		this.setTitle("Thoughtworks-homework");
 		this.setVisible(true);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -120,13 +284,24 @@ public class View2 extends JFrame implements ActionListener{
 				
 				if (jbVec.get(k).isSelected()) {
 					
-					strVec.add(jbVec.get(k).getText());
+					String st = jbVec.get(k).getText() + "-" +
+								scpeVec.get(k) + "-" + 
+								favWightVec.get(k).getText() + "-" +
+								priVec.get(k).getText() + "-" +
+								morePrijbVec.get(k).getText();
+					strVec.add(st);
 					//System.out.println(jbVec.get(k).getText());
 				}
 			}
 			
+//			for (int i = 0; i < strVec.size(); ++i) {
+//				
+//				System.out.println(strVec.get(i));
+//			}
 			//交给处理类处理
-			new ViewCl(filePath, strVec);
+			ViewCl vc = new ViewCl(filePath, strVec);
+			jp2_jtf2.setText("");
+			jp2_jtf2.append("打印小票结果:\n" + vc.getFinalInfo());
 		}
 	}
 }

@@ -10,6 +10,17 @@ import com.wty.domain.Product;
 
 public abstract class Strategry {
 
+	//最终的商品信息
+	protected Vector<Product> finalProInfo;
+	
+	public Vector<Product> getFinalProInfo() {
+		return finalProInfo;
+	}
+
+	public void setFinalProInfo(Vector<Product> finalProInfo) {
+		this.finalProInfo = finalProInfo;
+	}
+	////////////////////////////////////
 	abstract public void getResult(Vector<Product> prods, Vector<Favourable> faVec);
 	
 	//确定商品都有哪些优惠

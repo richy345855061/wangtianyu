@@ -158,7 +158,6 @@ public class RWStrHelper {
 
 		for (Map.Entry<String, Integer> entry : proMap.entrySet()) {
 			
-			 System.out.println("!!!" + entry.getKey());
 			for (int i = 0; i < strVec.size(); ++i) {
 				
 				String[] proObj = strVec.get(i).split("\\s+");

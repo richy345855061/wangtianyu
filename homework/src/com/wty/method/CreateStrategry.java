@@ -1,5 +1,6 @@
 package com.wty.method;
 import java.util.*;
+
 import com.wty.domain.*;
 import com.wty.method.*;
 
@@ -13,6 +14,7 @@ public class CreateStrategry {
 					           //            String[] favours = {"S-BNGMF-2-1", "T-ONMM-100-10"};
 	private Strategry strategry;
 	private int nStyle;
+	private Vector<Product> finalProInfo;
 	
 	public CreateStrategry(Vector<Product> prods, Vector<FavourStyle> favs) {
 		
@@ -29,6 +31,10 @@ public class CreateStrategry {
 	public Vector<FavourStyle> getFavour() {
 		
 		return favours;
+	}
+	
+	public Vector<Product> getFinalProInfo() {
+		return finalProInfo;
 	}
 	
 	private void judegtStyle() {
@@ -48,13 +54,20 @@ public class CreateStrategry {
 			}
 		}
 		
-		if (nS == size && 0 == nT) {
+		System.out.println("数量" + nT + " " + nS);
+		
+		if (nS == size && 0 == nT && size != 0) {
 			
 			strategry = new FavourAllSingle();
 		}
-		else if (nT == size && 0 == nS) {
+		else if (nT == size && 0 == nS && size != 0) {
 			
 			strategry = new FavourAllTotal();
+		}
+		else if (size == 0) {
+			
+			//System.out.println("haha");
+			strategry = new FavourNone();
 		}
 		else {
 			
@@ -70,8 +83,8 @@ public class CreateStrategry {
 		
 		//生成Context 通过相应的函数处理数据
 		FavourContext fc = new FavourContext(products, favours, strategry);
-		System.out.println("in");
 		fc.getResult();
+		this.finalProInfo = fc.getFinalProInfo();
 		
 	}
 }

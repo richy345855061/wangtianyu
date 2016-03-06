@@ -10,6 +10,7 @@ public class ViewCl {
 
 	private String filePath;
 	private Vector<String> strVec;
+	private Vector<Product> finalProInfo;
 	
 	public ViewCl(String fp, Vector<String> sv) {
 		
@@ -17,6 +18,10 @@ public class ViewCl {
 		this.strVec = sv;
 		
 		this.doPro();
+	}
+	
+	public Vector<Product> getFinalProInfo() {
+		return finalProInfo;
 	}
 	
 	private void doPro() {
@@ -35,5 +40,75 @@ public class ViewCl {
 //		RWStrHelper.printFavour(fsVec);
 		
 		cs.resultCl();
+		this.finalProInfo = cs.getFinalProInfo();
 	}
+	
+	public String getFinalInfo() {
+		
+		//将返回的类制作成字符串返回给view
+		//System.out.println(finalProInfo.size() + "返回的值");
+		boolean bIsBuyGetFree = false; //是否显示下面的买2赠一
+		Vector<Product> proBuyGetFree = new Vector<Product>();
+		float totalAll = 0.0f;
+		float favourMoneyAll = 0.0f;
+		
+		String finalInfo = "";
+		finalInfo += "**<没钱赚商店>购物清单**\n";
+		for (int i = 0; i < finalProInfo.size(); ++i) {
+			
+			Product p = finalProInfo.get(i);
+		
+			String s1 = "名称:" + p.getName() + "," +
+						"数量:" + p.getNums() + p.getStyle() + "," +
+						"单价:" + p.getPrice() + "(元)," +
+						"小计:" + p.getTotal() +"(元)";
+			if (p.getBuyFree() > 0.0000001) {
+				
+				bIsBuyGetFree = true;
+				proBuyGetFree.add(p);
+			}
+			
+			String s2 = "";
+			if (p.getFavourMoney() > 0.0000001) {
+				
+				s2 = ",节省" + p.getFavourMoney() + "(元)";
+			}
+			finalInfo += (s1 + s2 + "\n");
+			totalAll += p.getTotal(); //总和
+			favourMoneyAll += p.getFavourMoney();
+		}
+
+		if (bIsBuyGetFree) {
+			
+			finalInfo += "---------------------------\n买二赠一商品:\n";
+
+			for (int i = 0; i < proBuyGetFree.size(); ++i) {
+				
+				Product p = proBuyGetFree.get(i);
+				String ss = "名称:" + p.getName() + "," + "数量:" + p.getBuyFree() + p.getStyle() + "\n";
+				finalInfo += ss;
+			}
+		}
+		
+		finalInfo += "---------------------------\n";
+		finalInfo += "总计:" + totalAll + "(元)\n";
+		
+		if (favourMoneyAll > 0.0000001) {
+			
+			finalInfo += "节省:" + favourMoneyAll + "(元)\n";
+		}
+		finalInfo += "*******************************************************";
+		
+		
+		//名称：****，数量：*瓶，单价：3.00（元），小计：6.00（元），节省0.55（元）
+		//----------------------
+		//买二赠一商品：
+		//名称：可口可乐，数量：1瓶
+		//名称：羽毛球，数量：1个
+		//----------------------
+		//总计：21.00（元）
+		//节省：4.00（元）
+		return finalInfo;
+	}
+	
 }
