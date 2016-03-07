@@ -11,7 +11,7 @@ public class ViewManage {
 
 	private String filePath;
 	private Vector<String> strVec;
-	private Vector<Product> finalProInfo;
+	private OutputList outputList;
 	
 	public ViewManage(String fp, Vector<String> sv) {
 		
@@ -21,8 +21,8 @@ public class ViewManage {
 		//this.doPro();
 	}
 	
-	public Vector<Product> getFinalProInfo() {
-		return finalProInfo;
+	public OutputList getOutputList() {
+		return outputList;
 	}
 	
 	public void calProductList() {
@@ -41,17 +41,15 @@ public class ViewManage {
 //		RWStrHelper.printFavour(fsVec);
 		
 		cs.resultCl();
-		this.finalProInfo = cs.getFinalProInfo();
+		this.outputList = cs.getOutputList();
 	}
 	
 	public String getFinalInfo() {
 		
+		Vector<Product> finalProInfo = outputList.getProVec();
 		//将返回的类制作成字符串返回给view
 		//System.out.println(finalProInfo.size() + "返回的值");
-		boolean bIsBuyGetFree = false; //是否显示下面的买2赠一
 		Vector<Product> proBuyGetFree = new Vector<Product>();
-		float totalAll = 0.0f;
-		float favourMoneyAll = 0.0f;
 		
 		String finalInfo = "";
 		finalInfo += "**<没钱赚商店>购物清单**\n";
@@ -65,7 +63,6 @@ public class ViewManage {
 						"小计:" + new  DecimalFormat("##0.00").format(p.getTotal()) +"(元)";
 			if (p.getBuyFree() > 0.0000001) {
 				
-				bIsBuyGetFree = true;
 				proBuyGetFree.add(p);
 			}
 			
@@ -75,11 +72,9 @@ public class ViewManage {
 				s2 = ",节省" + new  DecimalFormat("##0.00").format(p.getFavourMoney()) + "(元)";
 			}
 			finalInfo += (s1 + s2 + "\n");
-			totalAll += p.getTotal(); //总和
-			favourMoneyAll += p.getFavourMoney();
 		}
 
-		if (bIsBuyGetFree) {
+		if (outputList.isExistBuyGetFree()) {
 			
 			finalInfo += "---------------------------\n买二赠一商品:\n";
 
@@ -92,11 +87,11 @@ public class ViewManage {
 		}
 		
 		finalInfo += "---------------------------\n";
-		finalInfo += "总计:" + new  DecimalFormat("##0.00").format(totalAll) + "(元)\n";
+		finalInfo += "总计:" + new  DecimalFormat("##0.00").format(outputList.getAllTotal()) + "(元)\n";
 		
-		if ((favourMoneyAll + Product.sAllOverFree) > 0.0000001) {
+		if (outputList.getAllFavourMoney() + Product.sAllOverFree > 0.0000001) {
 			
-			finalInfo += "节省:" + new  DecimalFormat("##0.00").format(favourMoneyAll + Product.sAllOverFree) + "(元)\n";
+			finalInfo += "节省:" + new  DecimalFormat("##0.00").format(outputList.getAllFavourMoney() + Product.sAllOverFree) + "(元)\n";
 		}
 		finalInfo += "*******************************************************";
 		

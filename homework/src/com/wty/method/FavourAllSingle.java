@@ -6,6 +6,7 @@ import java.util.Vector;
 
 
 import com.wty.domain.FavourStyle;
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
 
 public class FavourAllSingle extends Strategry {
@@ -16,7 +17,8 @@ public class FavourAllSingle extends Strategry {
 		
 		//得到每个商品满足的优惠
 		Map<Product, Vector<Favourable>> mapPro = this.getProSelfFavour(prods, faVec);
-		finalProInfo = new Vector<Product>();
+		Vector<Product> finalProInfo = new Vector<Product>();
+		
 				
 		for (int j = 0; j < prods.size(); ++j) {
 			
@@ -69,6 +71,7 @@ public class FavourAllSingle extends Strategry {
 			
 			finalProInfo.add(p);
 		}
+		outputList = new OutputList(finalProInfo);
 	}	
 }
 //

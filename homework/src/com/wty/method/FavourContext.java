@@ -9,7 +9,7 @@ public class FavourContext {
 	private Vector<Product> products;
 	private Vector<FavourStyle> favs;
 	private Strategry strategry;
-	private Vector<Product> finalProInfo;
+	private OutputList outputList;
 	
 	public FavourContext(Vector<Product> prods, Vector<FavourStyle> fas, Strategry sg) {
 		
@@ -50,8 +50,8 @@ public class FavourContext {
 		}
 	}
 	
-	public Vector<Product> getFinalProInfo() {
-		return finalProInfo;
+	public OutputList getOutputList() {
+		return outputList;
 	}
 
 	public void getResult() {
@@ -61,7 +61,7 @@ public class FavourContext {
 		//¿É¿Ú¿ÉÀÖ
 		Product.sAllOverFree = 0.0f;
 		strategry.getResult(products, faVec);
-		this.finalProInfo = strategry.getFinalProInfo();		
+		this.outputList = strategry.getOutputList();		
 	}
 	
 }

@@ -14,7 +14,7 @@ public class CreateStrategry {
 					           //            String[] favours = {"S-BNGMF-2-1", "T-ONMM-100-10"};
 	private Strategry strategry;
 	private int nStyle;
-	private Vector<Product> finalProInfo;
+	private OutputList outputList;
 	
 	public CreateStrategry(Vector<Product> prods, Vector<FavourStyle> favs) {
 		
@@ -41,8 +41,8 @@ public class CreateStrategry {
 		return favours;
 	}
 	
-	public Vector<Product> getFinalProInfo() {
-		return finalProInfo;
+	public OutputList getOutputList() {
+		return outputList;
 	}
 	
 	public void judegtStyle() {
@@ -61,8 +61,6 @@ public class CreateStrategry {
 				nT++;
 			}
 		}
-		
-		System.out.println("全场" + nT + " 单件" + nS);
 		
 		if (nS == size && 0 == nT && size != 0) {
 			
@@ -92,7 +90,7 @@ public class CreateStrategry {
 		//生成Context 通过相应的函数处理数据
 		FavourContext fc = new FavourContext(products, favours, strategry);
 		fc.getResult();
-		this.finalProInfo = fc.getFinalProInfo();
+		this.outputList = fc.getOutputList();
 		
 	}
 }

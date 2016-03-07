@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import com.wty.domain.FavourStyle;
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
 
 public class FavourSingleTotal extends Strategry {
@@ -28,14 +29,14 @@ public class FavourSingleTotal extends Strategry {
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {
 		// TODO Auto-generated method stub
 		
-		finalProInfo = new Vector<Product>();
+		Vector<Product> finalProInfo = new Vector<Product>();
 		System.out.println("s-t");
 		
 		//先把全和单分开
 		Vector<Favourable> sVec = new Vector<Favourable>();
 		sVec = this.getVecByScope(faVec, "单件");
 		Vector<Favourable> tVec = new Vector<Favourable>();
-		tVec = this.getVecByScope(faVec, "全部");
+		tVec = this.getVecByScope(faVec, "全场");
 
 				
 		//先处理单个
@@ -51,13 +52,10 @@ public class FavourSingleTotal extends Strategry {
 			//加上所有的全部
 			favv.addAll(tVec);
 //			//通过优先过滤			
-			System.out.println(favv.size() + "qian");
 			favv = filterFavourByPriority(favv);
-			System.out.println(favv.size() + "hou");
 //			//再次去掉里面的全局性优惠
-			tVec = this.getVecByScope(favv, "全部");
+			tVec = this.getVecByScope(favv, "全场");
 			favv = this.getVecByScope(favv, "单件");
-			System.out.println(tVec.size() + " " + favv.size());
 			
 //			
 			if (favv.size() > 0) {
@@ -75,7 +73,8 @@ public class FavourSingleTotal extends Strategry {
 				p.getResultByself();
 			}
 		}
-//		
+		
+		
 //		//全部
 //		//tVec = filterFavourByPriority(tVec);
 //		
@@ -86,7 +85,7 @@ public class FavourSingleTotal extends Strategry {
 		}
 		
 		finalProInfo = prods;
-		
+		outputList = new OutputList(finalProInfo);
 	}
 	
 }

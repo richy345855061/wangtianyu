@@ -8,8 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
-import com.wty.helper.HelperAssertEqual2Class;
+import com.wty.test.helper.HelperAssertEqual2Class;
 
 public class ViewManageTest {
 
@@ -35,7 +36,8 @@ public class ViewManageTest {
 		
 		vc.calProductList();
 		//测试最后的变化
-		Vector<Product> proVec = vc.getFinalProInfo();
+		OutputList outputList = vc.getOutputList();
+		Vector<Product> proVec = outputList.getProVec();
 		Vector<Product> proVec1 = new Vector<Product>();
 		
 //		System.out.println(p.getName() + "-" +

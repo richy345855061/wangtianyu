@@ -2,6 +2,7 @@ package com.wty.method;
 
 import java.util.Vector;
 
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
 
 public class FavourNoSingleTotal extends Strategry{
@@ -10,7 +11,7 @@ public class FavourNoSingleTotal extends Strategry{
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {
 		// TODO Auto-generated method stub
 		
-		finalProInfo = new Vector<Product>();
+		Vector<Product> finalProInfo = new Vector<Product>();
 		for (int i = 0; i < prods.size(); ++i) {
 			
 			Product p = prods.get(i);
@@ -19,6 +20,8 @@ public class FavourNoSingleTotal extends Strategry{
 		}
 		
 		Product.sAllOverFree = 0.0f;  //ÇåÁã
+		
+		outputList = new OutputList(finalProInfo);
 	}
 
 }

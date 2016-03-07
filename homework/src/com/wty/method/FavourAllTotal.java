@@ -3,6 +3,7 @@ package com.wty.method;
 import java.util.Vector;
 
 import com.wty.domain.FavourStyle;
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
 
 public class FavourAllTotal extends Strategry {
@@ -11,7 +12,7 @@ public class FavourAllTotal extends Strategry {
 	public void getResult(Vector<Product> prods, Vector<Favourable> faVec) {
 		// TODO Auto-generated method stub
 		
-		finalProInfo = new Vector<Product>();
+		Vector<Product> finalProInfo = new Vector<Product>();
 		
 		faVec = filterFavourByPriority(faVec);
 		
@@ -21,7 +22,8 @@ public class FavourAllTotal extends Strategry {
 			Favourable f = faVec.get(i);
 			f.favourTtoal(prods);
 		}
-		finalProInfo = prods;
+		finalProInfo = prods; 
+		outputList = new OutputList(finalProInfo);
 //		System.out.println("产品信息");
 //		for (int i = 0; i < prods.size(); ++i) {
 //			

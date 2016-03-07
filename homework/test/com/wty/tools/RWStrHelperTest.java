@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.wty.domain.FavourStyle;
 import com.wty.domain.Product;
-import com.wty.helper.HelperAssertEqual2Class;
+import com.wty.test.helper.HelperAssertEqual2Class;
 
 public class RWStrHelperTest {
 

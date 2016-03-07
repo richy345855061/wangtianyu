@@ -2,23 +2,25 @@ package com.wty.method;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Vector;
 
 import com.wty.domain.FavourStyle;
+import com.wty.domain.OutputList;
 import com.wty.domain.Product;
 
 public abstract class Strategry {
 
 	//最终的商品信息
-	protected Vector<Product> finalProInfo;
+	protected OutputList outputList;
 	
-	public Vector<Product> getFinalProInfo() {
-		return finalProInfo;
+	public OutputList getOutputList() {
+		return outputList;
 	}
 
-	public void setFinalProInfo(Vector<Product> finalProInfo) {
-		this.finalProInfo = finalProInfo;
+	public void setOutputList(OutputList outputList) {
+		this.outputList = outputList;
 	}
 	////////////////////////////////////
 	abstract public void getResult(Vector<Product> prods, Vector<Favourable> faVec);
@@ -27,7 +29,7 @@ public abstract class Strategry {
 	public Map<Product, Vector<Favourable>> getProSelfFavour(Vector<Product> prods, 
 			Vector<Favourable> faVec) {
 		
-		Map<Product, Vector<Favourable>> mapPro = new HashMap<Product, Vector<Favourable>>();
+		Map<Product, Vector<Favourable>> mapPro = new LinkedHashMap<Product, Vector<Favourable>>();
 		
 		//先确定商品满足的优惠
 		for (int j = 0; j < prods.size(); ++j) {
