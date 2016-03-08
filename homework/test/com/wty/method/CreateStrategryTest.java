@@ -85,7 +85,7 @@ public class CreateStrategryTest {
 		proVec1.add(p4);
 		proVec1.add(p5);
 		
-		HelperAssertEqual2Class.helpProduct(proVec, proVec1);
+		HelperAssertEqual2Class.helpProductVec(proVec, proVec1);
 	}
 
 }

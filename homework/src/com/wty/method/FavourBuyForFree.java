@@ -33,11 +33,9 @@ public class FavourBuyForFree extends Favourable {
 		p.setTotal(total);
 		p.setBuyFree(buyFree);
 		p.setNums(nums + buyFree);
-//		System.out.println("×Ü¼Û" + total);
-//		System.out.println("Ôù" + buyFree);
 	}
 	@Override
-	public void favourTtoal(Vector<Product> proVec) {
+	public void favourTotal(Vector<Product> proVec) {
 		// TODO Auto-generated method stub
 	}
 	

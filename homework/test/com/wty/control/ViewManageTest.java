@@ -74,7 +74,7 @@ public class ViewManageTest {
 		proVec1.add(p4);
 		proVec1.add(p5);
 		
-		HelperAssertEqual2Class.helpProduct(proVec1, proVec);
+		HelperAssertEqual2Class.helpProductVec(proVec1, proVec);
 		
 	}
 }

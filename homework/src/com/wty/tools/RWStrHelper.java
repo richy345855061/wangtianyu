@@ -9,7 +9,7 @@ import com.wty.domain.Product;
 
 public class RWStrHelper {
 
-	
+	//读取txt 每一行对应vector中的一个字符串
 	static public Vector<String> readTxt(String filePath) {
 		
 		
@@ -54,7 +54,7 @@ public class RWStrHelper {
 		return strVec;
 	}
 	
-	
+	//将txt中数据读取出来  按txt中的格式添加到一个string中  
 	static public String getAllData(String filePath) {
 		
 		Vector<String> strVec = readTxt(filePath);
@@ -68,6 +68,7 @@ public class RWStrHelper {
 		return str;
 	}
 	
+	//读取条形码，返回 每个条形码在txt中的数量
 	static public Map<String, Integer> readBarData(String filePath) {
 		
 		//LinkedHashMap 按输入顺序存储
@@ -114,7 +115,7 @@ public class RWStrHelper {
 		return proMap;
 	}
 
-	//通过界面选择的优惠方式封闭成类
+	//通过界面选择的优惠方式封装成类
 	static public Vector<FavourStyle> creObjByCkb(Vector<String> strVec) {
 		//S-买N赠M-2-1            现在是   买赠-单件-2~1-2-1
 						//    //买赠-范围-优惠程度-优先级-更高优先级

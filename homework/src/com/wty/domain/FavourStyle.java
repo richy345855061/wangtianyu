@@ -6,9 +6,9 @@ public class FavourStyle {
 	private String scope;
 	private String name;
 	private int id;
-	private int priority;     //优先级
-	private int morePriority; //更高优先级
-	private String favWeight; //优惠程度 2-1       100-10        95
+	private int priority;     //优先级        当一个商品同时享受多个单件优惠时，只享受优先级最高的优惠（只享受优惠级最高的一种 优惠）
+	private int morePriority; //当两个商品优先级一样时，根据更高优先级对优惠进行排序（按更高优先级大小按顺序享受多种 优惠）
+	private String favWeight; //优惠程度 2~1       100~10        95
 	private String favProducts;   //享受优惠的产品条形码  "ITEM000001-ITEM000002-ITEM000003"
 	
 

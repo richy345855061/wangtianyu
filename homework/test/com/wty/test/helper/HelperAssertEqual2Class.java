@@ -31,7 +31,7 @@ public class HelperAssertEqual2Class {
 	}
 	
 	//比较product类是否相同
-	public static void helpProduct(Vector<Product> proVec1, Vector<Product> proVec2) {
+	public static void helpProductVec(Vector<Product> proVec1, Vector<Product> proVec2) {
 		
 		for (int i = 0; i < proVec1.size(); ++i) {
 			
@@ -46,6 +46,18 @@ public class HelperAssertEqual2Class {
 			assertEquals(i + "7", p1.getTotal()+"", p2.getTotal()+"");
 			assertEquals("8", p1.getFavourMoney()+"", p2.getFavourMoney()+"");
 		}
+	}
+	
+	public static void helpProductSingle(Product p1, Product p2) {
+		
+		assertEquals("1", p1.getName(), p2.getName());
+		assertEquals("22", p1.getPrice()+"", p2.getPrice()+"");
+		assertEquals("3", p1.getNums()+"", p2.getNums()+"");
+		assertEquals("4", p1.getStyle(), p2.getStyle());
+		assertEquals("5", p1.getBarcode(), p2.getBarcode());
+		assertEquals("6", p1.getBuyFree()+"", p2.getBuyFree()+"");
+		assertEquals("7", p1.getTotal()+"", p2.getTotal()+"");
+		assertEquals("8", p1.getFavourMoney()+"", p2.getFavourMoney()+"");
 	}
 	
 	public static void helpFavourable(Vector<Favourable> favVec1, Vector<Favourable> favVec2) {
@@ -82,7 +94,7 @@ public class HelperAssertEqual2Class {
 			vvFav2.add(entry.getValue());
 		}
 		
-		HelperAssertEqual2Class.helpProduct(proVec, proVec2);
+		HelperAssertEqual2Class.helpProductVec(proVec, proVec2);
 		
 		for (int i = 0; i < vvFav.size(); ++i) {
 			

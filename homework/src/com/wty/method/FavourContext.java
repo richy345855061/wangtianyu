@@ -24,22 +24,18 @@ public class FavourContext {
 			
 			FavourStyle fs = favs.get(i);
 			int nType = fs.getId();
-			
-			//优惠数据
-//			String[] favStr = fs.getFavWeight().split("-");
-			//[0]标注是单件还是全场   [1]标注是哪种优惠
-//          String[] favours = {"S-买N赠M-2-1", "T-满N减M-100-10"};
+
 			switch (nType) {
 			case 1://买2赠一
-				fa = new FactoryB2G1F(fs).createFavour();
+				fa = new FactoryBuyForFree(fs).createFavour();
 				break;
 				
 			case 2://95%
-				fa = new Factory95Dis(fs).createFavour();
+				fa = new FactoryDiscount(fs).createFavour();
 				break;
 				
 			case 3://满200减100
-				fa = new FactoryO200M10(fs).createFavour();
+				fa = new FactoryOverMinus(fs).createFavour();
 				break;
 
 			default:
@@ -54,6 +50,10 @@ public class FavourContext {
 		return outputList;
 	}
 
+	public Vector<Favourable> getFaVec() {
+		
+		return faVec;
+	}
 	public void getResult() {
 		
 		//将每个商品进行判断处理

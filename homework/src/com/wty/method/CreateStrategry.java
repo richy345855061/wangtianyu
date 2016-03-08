@@ -9,18 +9,15 @@ public class CreateStrategry {
 
 	//从界面会收到产品集合 还有优惠集合
 	private Vector<Product> products;
-	private Vector<FavourStyle> favours;  //信息的形式例如："S-BNGMF-2-1"（单件-买赠-2-1）
-							   //			 "S-DISNM-95"（单件-折扣-95）     "T-ONMM-100-10"（全部-满减-100-10）
-					           //            String[] favours = {"S-BNGMF-2-1", "T-ONMM-100-10"};
+	private Vector<FavourStyle> favours;  //信息的形式例如："折扣-单件-95-2-1"
+							 		      //优惠类型-优惠范围-优惠力度-优先级-更高优先级
 	private Strategry strategry;
-	private int nStyle;
 	private OutputList outputList;
 	
 	public CreateStrategry(Vector<Product> prods, Vector<FavourStyle> favs) {
 		
 		this.products = prods;
 		this.favours = favs;
-		nStyle = 0;
 		strategry = null;
 	}
 	
@@ -72,7 +69,6 @@ public class CreateStrategry {
 		}
 		else if (size == 0) {
 			
-			//System.out.println("haha");
 			strategry = new FavourNoSingleTotal();
 		}
 		else {
@@ -80,7 +76,6 @@ public class CreateStrategry {
 			strategry = new FavourSingleTotal();
 		}
 	}
-	
 	
 	public void resultCl() {
 		
@@ -91,6 +86,5 @@ public class CreateStrategry {
 		FavourContext fc = new FavourContext(products, favours, strategry);
 		fc.getResult();
 		this.outputList = fc.getOutputList();
-		
 	}
 }

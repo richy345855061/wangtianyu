@@ -48,10 +48,7 @@ public abstract class Strategry {
 					proVec.add(f);
 				}
 			}
-			
-			//通过优先级滤掉优惠   如果优先级相同  排优惠顺序
-			
-			
+
 			mapPro.put(p, proVec);
 		}
 		
@@ -108,30 +105,6 @@ public abstract class Strategry {
 					}
 				}
 			}
-//		if (vec1.size() > 1) {
-//			
-//			//排序
-//			Map<Integer, Favourable> maps = new HashMap<Integer, Favourable>();
-//			
-//			int size2 = vec1.size();
-//			int[] morePriNums = new int[size2];
-//			for (int k = 0; k < size2; ++k) {
-//				
-//				Favourable f = vec1.get(k);
-//				int priTemp = f.getFavourConcrete().getMorePriority();
-//				morePriNums[k] = priTemp;
-//				maps.put(priTemp, f);
-//				
-//			}
-//			
-//			Arrays.sort(morePriNums);
-//			
-//			
-//			for (int p = morePriNums.length - 1; p >= 0; --p) {
-//				
-//				vec2.add(maps.get(p));
-//			}
-			//System.out.println(vec2.get(0).getFavourConcrete().getName());
 			return vec2;
 		}
 		else {

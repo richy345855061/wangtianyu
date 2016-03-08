@@ -2,6 +2,7 @@ package com.wty.domain;
 
 import java.util.Vector;
 
+//输出清单类
 public class OutputList {
 
 	private Vector<Product> proVec;

@@ -30,7 +30,7 @@ public class FavourDiscount extends Favourable {
 	}
 
 	@Override
-	public void favourTtoal(Vector<Product> proVec) {
+	public void favourTotal(Vector<Product> proVec) {
 		// TODO Auto-generated method stub
 		
 		for (int i = 0; i < proVec.size(); ++i) {

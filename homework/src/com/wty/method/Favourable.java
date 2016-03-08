@@ -16,8 +16,8 @@ public abstract class Favourable {
 	}
 	//单件优惠
 	public abstract void favourSingle(Product p);
-	//全部商品优惠
-	public abstract void favourTtoal(Vector<Product> proVec);
+	//全场商品优惠
+	public abstract void favourTotal(Vector<Product> proVec);
 }
 
 

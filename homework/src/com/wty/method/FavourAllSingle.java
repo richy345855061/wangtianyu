@@ -26,29 +26,13 @@ public class FavourAllSingle extends Strategry {
 			Product p = prods.get(j);
 			Vector<Favourable> favv = mapPro.get(p);
 			
-			//商品本身不受任何优惠    或者超市不提供任何优惠
-//			if (favv.size() == 0) {
-//				
-//				p.getResultByself(); //调用自己的方法
-//			}
-			
 			favv = filterFavourByPriority(favv);
-			
-//			System.out.println(p.getName() + "-" +
-//			p.getNums() + "-" +
-//			p.getPrice() + "-" +
-//			p.getStyle() + "-" +
-//			p.getBarcode() + "-" +
-//			p.getBuyFree() + "-" +
-//			p.getTotal() + "-" +
-//			p.getFavourMoney());
 			
 			if (favv.size() > 0) {
 				
 				for (int i = 0; i < favv.size(); ++i) {
 					
 					Favourable f = favv.get(i);
-					//System.out.println(f.getFavourConcrete().getName());
 					f.favourSingle(p);
 				}
 			}
@@ -57,31 +41,9 @@ public class FavourAllSingle extends Strategry {
 				//如果一个优惠都不满足
 				p.getResultByself();
 			}
-			
-			
-			
-//			System.out.println(p.getName() + "-" +
-//			p.getNums() + "-" +
-//			p.getPrice() + "-" +
-//			p.getStyle() + "-" +
-//			p.getBarcode() + "-" +
-//			p.getBuyFree() + "-" +
-//			p.getTotal() + "-" +
-//			p.getFavourMoney());
-			
+
 			finalProInfo.add(p);
 		}
 		outputList = new OutputList(finalProInfo);
 	}	
 }
-//
-//
-//
-//System.out.println(p.getName() + "-" +
-//		p.getNums() + "-" +
-//		p.getPrice() + "-" +
-//		p.getStyle() + "-" +
-//		p.getBarcode() + "-" +
-//		p.getBuyFree() + "-" +
-//		p.getTotal() + "-" +
-//		p.getFavourMoney());

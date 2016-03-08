@@ -81,7 +81,7 @@ public class FavourAllTotalTest {
 		proVec2.add(p4);
 		proVec2.add(p5);
 		
-		HelperAssertEqual2Class.helpProduct(proVec1, proVec2);
+		HelperAssertEqual2Class.helpProductVec(proVec1, proVec2);
 	}
 
 }

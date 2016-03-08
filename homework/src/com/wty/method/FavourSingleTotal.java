@@ -30,14 +30,12 @@ public class FavourSingleTotal extends Strategry {
 		// TODO Auto-generated method stub
 		
 		Vector<Product> finalProInfo = new Vector<Product>();
-		System.out.println("s-t");
 		
 		//先把全和单分开
 		Vector<Favourable> sVec = new Vector<Favourable>();
 		sVec = this.getVecByScope(faVec, "单件");
 		Vector<Favourable> tVec = new Vector<Favourable>();
 		tVec = this.getVecByScope(faVec, "全场");
-
 				
 		//先处理单个
 		Map<Product, Vector<Favourable>> mapPro = this.getProSelfFavour(prods, sVec);
@@ -48,16 +46,14 @@ public class FavourSingleTotal extends Strategry {
 			//测试一下
 			Product p = prods.get(j);
 			Vector<Favourable> favv = mapPro.get(p);
-			//System.out.println("第一个大小" + favv.size() + p.getName());
 			//加上所有的全部
 			favv.addAll(tVec);
-//			//通过优先过滤			
+			//通过优先过滤			
 			favv = filterFavourByPriority(favv);
-//			//再次去掉里面的全局性优惠
+			//再次去掉里面的全局性优惠
 			tVec = this.getVecByScope(favv, "全场");
 			favv = this.getVecByScope(favv, "单件");
-			
-//			
+				
 			if (favv.size() > 0) {
 				
 				for (int i = 0; i < favv.size(); ++i) {
@@ -81,7 +77,7 @@ public class FavourSingleTotal extends Strategry {
 		for (int i = 0; i < tVec.size(); ++i) {
 			
 			Favourable f = tVec.get(i);
-			f.favourTtoal(prods);
+			f.favourTotal(prods);
 		}
 		
 		finalProInfo = prods;

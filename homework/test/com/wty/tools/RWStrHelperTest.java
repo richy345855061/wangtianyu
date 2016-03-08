@@ -87,7 +87,7 @@ public class RWStrHelperTest {
 		proVec.add(new Product("±ý¸É", 4.5f, 1.0f, "°ü", "ITEM000004"));
 		proVec.add(new Product("»ðÁú¹û", 9.0f, 4.0f, "½ï", "ITEM000005"));
 		
-		HelperAssertEqual2Class.helpProduct(proVec1, proVec);
+		HelperAssertEqual2Class.helpProductVec(proVec1, proVec);
 	}
 	
 }

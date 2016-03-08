@@ -20,31 +20,9 @@ public class FavourAllTotal extends Strategry {
 		for (int i = 0; i < faVec.size(); ++i) {
 			
 			Favourable f = faVec.get(i);
-			f.favourTtoal(prods);
+			f.favourTotal(prods);
 		}
 		finalProInfo = prods; 
 		outputList = new OutputList(finalProInfo);
-//		System.out.println("产品信息");
-//		for (int i = 0; i < prods.size(); ++i) {
-//			
-//			Product p = prods.get(i);
-//			System.out.println(p.getName() + "-" +
-//								p.getNums() + "-" +
-//								p.getPrice() + "-" +
-//								p.getStyle() + "-" +
-//								p.getBarcode());
-//		}
-//		
-//		System.out.println("优惠信息");
-//		for (int i = 0; i < faVec.size(); ++i) {
-//			
-//			FavourStyle fs = faVec.get(i).getFavourConcrete();
-//			System.out.println(fs.getName() + "-" +
-//					fs.getId() + "-" +
-//					fs.getScope() + "-" +
-//					fs.getPriority() + "-" +
-//					fs.getMorePriority() + "-" +
-//					fs.getFavWeight());
-//		}
 	}
 }

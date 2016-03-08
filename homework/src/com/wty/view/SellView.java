@@ -104,13 +104,7 @@ public class SellView extends JFrame implements ActionListener{
 		jp3_jcb3 = new JCheckBox("满减(满N减M为:N~M)");
 		jp3_jb1 = new JButton("打印小票");
 		jp3_jb1.setFont(new java.awt.Font("Dialog", 1, 30));
-		
-//		JPanel jp4_jp1, jp4_jp2, jp4_jp3;
-//		JComboBox  jp4_jp1_jcb1, jp4_jp1_jcb2, jp4_jp1_jcb3;
-//		JTextField jp4_jp1_jtf1, jp4_jp1_jtf2, jp4_jp1_jtf3;
-//		JTextField jp4_jp2_jtf1, jp4_jp2_jtf2, jp4_jp2_jtf3,;
-//		JTextField jp4_jp3_jtf1, jp4_jp3_jtf2, jp4_jp3_jtf3,;
-//		JLabel jp4_jbl1, jp4_jbl2, jp4_jbl3, jp4_jbl4;
+
 		//第一行
 		jp4_jbl1 = new JLabel("折扣类型", JLabel.CENTER); 
 		jp4_jbl2 = new JLabel("折扣范围", JLabel.CENTER); 
@@ -160,11 +154,9 @@ public class SellView extends JFrame implements ActionListener{
 		morePrijbVec.add(jp4_jp3_jtf2);
 		morePrijbVec.add(jp4_jp3_jtf3);
 		
-		
 		jbVec.add(jp3_jcb1);
 		jbVec.add(jp3_jcb2);
 		jbVec.add(jp3_jcb3);
-
 	
 		jp1.add(jp1_jbl1);
 		jp1.add(jp1_jb1);
@@ -266,7 +258,6 @@ public class SellView extends JFrame implements ActionListener{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(50, 50);//保持窗口弹出位置居中
-		//this.setIconImage((new ImageIcon("image/头像.GIF").getImage()));
 		this.setTitle("王天瑜的家庭作业");
 		this.setVisible(true);
 	}

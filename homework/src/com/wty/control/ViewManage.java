@@ -37,9 +37,6 @@ public class ViewManage {
 		//传递给类CreateStrategry 生成相应的Strategry
 		CreateStrategry cs = new CreateStrategry(proVec, fsVec);
 		
-//		RWStrHelper.printProduct(proVec);
-//		RWStrHelper.printFavour(fsVec);
-		
 		cs.resultCl();
 		this.outputList = cs.getOutputList();
 	}
@@ -48,7 +45,6 @@ public class ViewManage {
 		
 		Vector<Product> finalProInfo = outputList.getProVec();
 		//将返回的类制作成字符串返回给view
-		//System.out.println(finalProInfo.size() + "返回的值");
 		Vector<Product> proBuyGetFree = new Vector<Product>();
 		
 		String finalInfo = "";
@@ -94,16 +90,7 @@ public class ViewManage {
 			finalInfo += "节省:" + new  DecimalFormat("##0.00").format(outputList.getAllFavourMoney() + Product.sAllOverFree) + "(元)\n";
 		}
 		finalInfo += "*******************************************************";
-		
-		
-		//名称：****，数量：*瓶，单价：3.00（元），小计：6.00（元），节省0.55（元）
-		//----------------------
-		//买二赠一商品：
-		//名称：可口可乐，数量：1瓶
-		//名称：羽毛球，数量：1个
-		//----------------------
-		//总计：21.00（元）
-		//节省：4.00（元）
+
 		return finalInfo;
 	}
 	

@@ -32,7 +32,6 @@ public class FavourOverMinus extends Favourable {
 			total = (nums - buyFree) * price; //防止前面经过买 赠  先减去赠数量
 		}
 		
-		
 		if (total - over > 0.00000001) {
 			
 			total -= minus;
@@ -50,7 +49,7 @@ public class FavourOverMinus extends Favourable {
 	}
 
 	@Override
-	public void favourTtoal(Vector<Product> proVec) {
+	public void favourTotal(Vector<Product> proVec) {
 		// TODO Auto-generated method stub
 		
 		//总体满200减10
